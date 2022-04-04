@@ -1,1 +1,31 @@
-<h1>Pokedex</h1>
+<div class="container">
+  <h1>Pokedex</h1>
+
+  <hr />
+
+  <div class="container">
+    <app-search></app-search>
+  </div>
+
+  <div *ngFor="let result of listPokemon.results">
+    <div class="row">
+      <ul>
+        <li>
+          {{ result.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr />
+
+  <div *ngFor="let result of listPokemon.results">
+    <!-- {{ result.url }} -->
+
+    <!-- <img [src]="['result.url.sprites.back_default']" alt="" /> -->
+  </div>
+
+  <!-- <button onclick="getPokemonList({data.previous})" (click)=""> -->
+  <i class="far fa-arrow-alt-circle-left"></i>
+  <!-- </button> -->
+</div>

@@ -1,0 +1,132 @@
+<body>
+  <div class="search-group">
+    <div>
+      <select
+        [(ngModel)]="pokemonNameInput"
+        *ngIf="select"
+        style="width: 200px"
+      >
+        <option
+          [value]="result.name"
+          *ngFor="let result of listPokemon.results"
+        >
+          {{ result.name }}
+        </option>
+      </select>
+      <input
+        type="text"
+        [(ngModel)]="pokemonNameInput"
+        *ngIf="type"
+        style="width: 200px"
+      />
+      <button (click)="searchPokemon()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+    <div class="col">
+      <button (click)="onSwitchMode()" type="button">
+        Switch to {{ searchMode ? "Type" : "Select" }} mode
+      </button>
+    </div>
+  </div>
+
+  <div class="searched-pokemon" *ngIf="show">
+    <div class="backdrop" (click)="onCloseModal()"></div>
+    <div *ngIf="errorMessageShow" class="modal-box">
+      <p>
+        {{ errorMessage }}
+      </p>
+
+      <p>{{ pokemonNameInput }} is not a known pokemon</p>
+
+      <div class="modal-actions">
+        <button (click)="onCloseModal()" class="btn btn-danger">X</button>
+      </div>
+    </div>
+
+    <div *ngIf="pokemonsShow" class="modal-box">
+      <div *ngFor="let pokemon of pokemons">
+        <img [src]="[pokemon.sprites.back_default]" alt="" />
+
+        <p>name: {{ pokemon.name }}</p>
+        <p>height: {{ pokemon.height }}m</p>
+        <p>weight: {{ pokemon.weight }}kg</p>
+
+        <div>
+          type:
+          <ul *ngFor="let type of pokemon.types">
+            <li>
+              {{ type.type.name }}
+            </li>
+          </ul>
+        </div>
+
+        <button (click)="onMoves()">moves:</button>
+        <div *ngIf="showMoves">
+          <!-- <p>moves: {{ pokemon.moves[0].move.name }}</p> -->
+
+          moves:
+          <ul *ngFor="let move of pokemon.moves">
+            <!-- <div *ngFor="let m of move[0]">move: {{ m.name }}</div> -->
+
+            <li>
+              {{ move.move.name }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- <img [src]="['pokemon.sprites.back_default']" alt="" /> -->
+
+        <!-- <div *ngFor="let picture of pokemon.sprites">
+              <img [src]="['picture.back_default']" alt="" />
+            </div> -->
+        <!-- <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/405.png"  /> -->
+
+        <!-- <div *ngFor="let move of pokemon.moves">
+              <p>move:</p>
+              {{ move.name }}
+            </div> -->
+
+        <div>
+          abilities:
+          <ul *ngFor="let ability of pokemon.abilities">
+            <li>
+              {{ ability.ability.name }}
+              <!-- {{ pokemon.abilities[2].ability.name }} -->
+            </li>
+
+            <!-- {{ pokemon.abilities[2].ability.name }} -->
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button (click)="onCloseModal()" class="btn btn-danger">X</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!--
+
+<div *ngFor="let pokemon of pokemons">
+        <ul *ngFor="let a of pokemon.abilities">
+          <li>
+            {{ pokemon.abilities[0].ability.name }}
+          </li>
+
+          <li>
+            {{ pokemon.abilities[1].ability.name }}
+          </li>
+          <li>
+            {{ pokemon.abilities[2].ability.name }}
+          </li>
+          <li>
+            {{ pokemon.abilities[3].ability.name }}
+          </li>
+        </ul>
+      </div>
+
+
+ -->

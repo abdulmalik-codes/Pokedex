@@ -1,0 +1,45 @@
+.search-group {
+  position: fixed;
+  right: 20px;
+  top: 30px;
+}
+
+.searched-pokemon {
+  background-color: rgb(206, 184, 206);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 99;
+  text-align: center;
+  /* position: fixed; */
+  top: 30px;
+  /* width: 500px; */
+}
+
+/* ........................... */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
+}
+
+.modal-box {
+  position: fixed;
+  top: 10vh;
+  left: 20vw;
+  width: 60vw;
+  padding: 16px;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+  overflow: scroll;
+}
+
+.modal-actions {
+  text-align: right;
+}
