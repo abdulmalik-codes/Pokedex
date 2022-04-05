@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  src: url("./assets/Pokemon-Solid.ttf");
+  font-family: pokemon;
+}
+
+@font-face {
+  src: url("./assets/Pokemon-Hollow.ttf");
+  font-family: pokemon-hallow;
+}
+
+body {
+  background-image: url("../src/assets/pokedex_background.jfif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  /* width: 50vw; */
+}

@@ -61,6 +61,12 @@ export class AppComponent implements OnInit {
       });
   }
 
+  onNext() {
+    this.listPokemon;
+  }
+
+  onPrevious() {}
+
   searchPokemon() {
     (async () => {
       const api = new PokemonClient();

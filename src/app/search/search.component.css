@@ -1,22 +1,8 @@
 .search-group {
   position: fixed;
   right: 20px;
-  top: 30px;
+  top: 20px;
 }
-
-.searched-pokemon {
-  background-color: rgb(206, 184, 206);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 99;
-  text-align: center;
-  /* position: fixed; */
-  top: 30px;
-  /* width: 500px; */
-}
-
-/* ........................... */
 
 .backdrop {
   position: fixed;
@@ -28,18 +14,100 @@
   z-index: 50;
 }
 
-.modal-box {
-  position: fixed;
-  top: 10vh;
-  left: 20vw;
-  width: 60vw;
-  padding: 16px;
-  z-index: 100;
-  background: white;
-  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
-  overflow: scroll;
+.backdrop:hover {
+  cursor: zoom-out;
 }
 
-.modal-actions {
-  text-align: right;
+.pokemon-modal {
+  position: absolute;
+  top: 5vh;
+  left: 20vw;
+  width: 60vw;
+  height: 90%;
+  padding: 16px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+  border-radius: 30px;
+}
+
+h2 {
+  font-family: pokemon;
+  color: #2a75bb;
+  -webkit-text-fill-color: #ffcb05;
+  -webkit-text-stroke-width: 2px;
+}
+
+h3 {
+  font-family: pokemon-hallow;
+  color: #ffcb05;
+  -webkit-text-fill-color: #2a75bb;
+  -webkit-text-stroke-width: 2px;
+}
+
+h3 span {
+  font-family: pokemon;
+}
+/* ........................... */
+
+/* types styles */
+
+.img-background {
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+}
+.pokemon-modal.water {
+  background: rgb(122, 248, 255);
+}
+
+.img-background.water {
+  background-image: url("../../assets/water_background.jfif");
+}
+
+.pokemon-modal.fire {
+  background: rgb(174, 7, 7);
+}
+.img-background.fire {
+  background-image: url("../../assets/fire_background.jfif");
+}
+
+.pokemon-modal.flying {
+  background: rgb(72, 255, 0);
+}
+.img-background.flying {
+  background-image: url("../../assets/flying_background.jfif");
+}
+
+.pokemon-modal.normal {
+  background: rgb(11, 12, 11);
+}
+.img-background.normal {
+  background-image: url("../../assets/Forest_Habitat.png");
+}
+
+.pokemon-modal.grass {
+  background: rgb(72, 255, 0);
+}
+.img-background.grass {
+  background-image: url("../../assets/grass_background.jfif");
+}
+
+.pokemon-modal.poison {
+  background: rgb(0, 0, 0);
+}
+.img-background.poison {
+  background-image: url("../../assets/Forest_Habitat.png");
+}
+
+.pokemon-modal.electric {
+  background: rgb(0, 115, 255);
+}
+.img-background.electric {
+  background-image: url("../../assets/Forest_Habitat.png");
 }

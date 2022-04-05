@@ -1,112 +1,183 @@
-<body>
-  <div class="search-group">
-    <div>
+<div class="search-group">
+  <div class="row">
+    <div class="col">
       <select
+        class="form-select"
         [(ngModel)]="pokemonNameInput"
         *ngIf="select"
         style="width: 200px"
       >
         <option
-          [value]="result.name"
           *ngFor="let result of listPokemon.results"
+          [value]="result.name"
         >
           {{ result.name }}
         </option>
       </select>
       <input
+        class="form-control"
         type="text"
         [(ngModel)]="pokemonNameInput"
         *ngIf="type"
         style="width: 200px"
       />
-      <button (click)="searchPokemon()">
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="searchPokemon()">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
-
-    <div class="col">
-      <button (click)="onSwitchMode()" type="button">
-        Switch to {{ searchMode ? "Type" : "Select" }} mode
-      </button>
-    </div>
   </div>
 
-  <div class="searched-pokemon" *ngIf="show">
-    <div class="backdrop" (click)="onCloseModal()"></div>
-    <div *ngIf="errorMessageShow" class="modal-box">
-      <p>
-        {{ errorMessage }}
-      </p>
+  <div class="col">
+    <hr />
+    <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+      Switch to {{ searchMode ? "Type" : "Select" }} mode
+    </button>
+  </div>
+</div>
 
-      <p>{{ pokemonNameInput }} is not a known pokemon</p>
+<div class="backdrop" (click)="onCloseModal()" *ngIf="show">
+  <div *ngIf="pokemonsShow">
+    <div *ngFor="let pokemon of pokemons">
+      <div class="pokemon-modal" [ngClass]="pokemonTypes()">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h2>
+                {{ pokemon.name }}
+              </h2>
+            </div>
 
-      <div class="modal-actions">
-        <button (click)="onCloseModal()" class="btn btn-danger">X</button>
+            <div class="col">
+              <h3>
+                {{ pokemon.stats[0].stat.name | uppercase }}
+                <span>
+                  {{ pokemon.stats[0].base_stat }}
+                </span>
+              </h3>
+            </div>
+          </div>
+
+          <div [ngClass]="pokemonTypes()" class="img-background">
+            <img
+              style="height: 150px; width: 150px"
+              [src]="[pokemon.sprites.other.dream_world.front_default]"
+              alt=""
+            />
+          </div>
+
+          <div class="container">
+            <p>height: {{ pokemon.height }}m</p>
+            <p>weight: {{ pokemon.weight }}kg</p>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h5>
+                  {{ pokemon.stats[1].stat.name }}
+                  {{ pokemon.stats[1].base_stat }}
+                </h5>
+              </div>
+
+              <div class="col">
+                <h5>
+                  {{ pokemon.stats[2].stat.name }}
+                  {{ pokemon.stats[2].base_stat }}
+                </h5>
+              </div>
+
+              <div class="col">
+                <h5>
+                  {{ pokemon.stats[3].stat.name }}
+                  {{ pokemon.stats[3].base_stat }}
+                </h5>
+              </div>
+
+              <div class="col">
+                <h5>
+                  {{ pokemon.stats[4].stat.name }}
+                  {{ pokemon.stats[4].base_stat }}
+                </h5>
+              </div>
+
+              <div class="col">
+                <h5>
+                  {{ pokemon.stats[5].stat.name }}
+                </h5>
+                <h4>
+                  {{ pokemon.stats[5].base_stat }}
+                </h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <h4>abilities:</h4>
+            <h5 *ngFor="let ability of pokemon.abilities">
+              {{ ability.ability.name }}
+            </h5>
+          </div>
+
+          <!-- types -->
+          <div>
+            type:
+            <ul *ngFor="let type of pokemon.types">
+              <li>
+                {{ type.type.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div *ngIf="pokemonsShow" class="modal-box">
-      <div *ngFor="let pokemon of pokemons">
-        <img [src]="[pokemon.sprites.back_default]" alt="" />
-
-        <p>name: {{ pokemon.name }}</p>
-        <p>height: {{ pokemon.height }}m</p>
-        <p>weight: {{ pokemon.weight }}kg</p>
-
-        <div>
-          type:
-          <ul *ngFor="let type of pokemon.types">
-            <li>
-              {{ type.type.name }}
-            </li>
-          </ul>
-        </div>
-
-        <button (click)="onMoves()">moves:</button>
-        <div *ngIf="showMoves">
-          <!-- <p>moves: {{ pokemon.moves[0].move.name }}</p> -->
-
-          moves:
-          <ul *ngFor="let move of pokemon.moves">
-            <!-- <div *ngFor="let m of move[0]">move: {{ m.name }}</div> -->
-
-            <li>
-              {{ move.move.name }}
-            </li>
-          </ul>
-        </div>
-
-        <!-- <img [src]="['pokemon.sprites.back_default']" alt="" /> -->
-
-        <!-- <div *ngFor="let picture of pokemon.sprites">
+      <!-- <div *ngFor="let picture of pokemon.sprites">
               <img [src]="['picture.back_default']" alt="" />
             </div> -->
-        <!-- <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/405.png"  /> -->
+      <!-- <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/405.png"  /> -->
 
-        <!-- <div *ngFor="let move of pokemon.moves">
+      <!-- <div *ngFor="let move of pokemon.moves">
               <p>move:</p>
               {{ move.name }}
             </div> -->
-
-        <div>
-          abilities:
-          <ul *ngFor="let ability of pokemon.abilities">
-            <li>
-              {{ ability.ability.name }}
-              <!-- {{ pokemon.abilities[2].ability.name }} -->
-            </li>
-
-            <!-- {{ pokemon.abilities[2].ability.name }} -->
-          </ul>
-        </div>
-      </div>
-
-      <div class="modal-actions">
-        <button (click)="onCloseModal()" class="btn btn-danger">X</button>
-      </div>
     </div>
   </div>
-</body>
+</div>
+
+<!-- add -->
+
+<!--
+<hr />
+
+
+<button (click)="onMoves()">moves:</button>
+<div *ngIf="showMoves">
+  <p>moves: {{ pokemon.moves[0].move.name }}</p>
+
+  moves:
+  <ul *ngFor="let move of pokemon.moves">
+    <div *ngFor="let m of move[0]">move: {{ m.name }}</div>
+
+    <li>
+      {{ move.move.name }}
+    </li>
+  </ul>
+</div>
+
+<div>
+abilities:
+<ul *ngFor="let ability of pokemon.abilities">
+<li>
+  {{ ability.ability.name }}
+  {{ pokemon.abilities[2].ability.name }}
+</li>
+
+{{ pokemon.abilities[2].ability.name }}
+</ul>
+</div>
+
+ -->
 
 <!--
 
@@ -130,3 +201,72 @@
 
 
  -->
+
+<!--
+
+
+  <div class="course-category" [ngSwitch]="pokemon.types">
+          <p>type:</p>
+          <div class="category" *ngSwitchCase="'water'">water</div>
+
+          <div class="category" *ngSwitchCase="'fire'">fire</div>
+
+          <div class="category" *ngSwitchCase="'flying'">flying</div>
+
+          <div class="category" *ngSwitchDefault>All Levels</div>
+        </div>
+  -->
+
+<!--
+
+    <div>
+          type:
+          <ul *ngFor="let type of pokemon.types">
+            <li>
+              {{ type.type.name }}
+            </li>
+          </ul>
+        </div>
+   -->
+
+<!-- switch case -->
+
+<!--
+
+<div class="test" style="height: 10vh">
+            <p>type 2:</p>
+            <ul *ngFor="let type of pokemon.types">
+              <div class="course-category" [ngSwitch]="type.type.name">
+                <div *ngSwitchCase="'water'">water type</div>
+
+                <div *ngSwitchCase="'fire'">fire type</div>
+
+                <div *ngSwitchCase="'flying'">flying type</div>
+
+                <div *ngSwitchCase="'poison'">poison type</div>
+                <div *ngSwitchCase="'grass'">grass type</div>
+
+                <div class="category" *ngSwitchDefault>All types</div>
+              </div>
+            </ul>
+          </div>
+
+
+    -->
+
+<!-- error -->
+
+<!--
+
+      <div *ngIf="errorMessageShow" class="modal-box">
+    <p>
+      {{ errorMessage }}
+    </p>
+
+    <p>"{{ pokemonNameInput | lowercase }}" is not a known pokemon</p>
+
+    <div class="modal-actions">
+      <button (click)="onCloseModal()" class="btn btn-danger">X</button>
+    </div>
+  </div>
+     -->

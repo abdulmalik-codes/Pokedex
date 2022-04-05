@@ -1,0 +1,9 @@
+h1 {
+  font-family: pokemon;
+  color: #2a75bb;
+  -webkit-text-fill-color: #ffcb05;
+  -webkit-text-stroke-width: 5px;
+  font-size: 80px;
+
+  text-align: center;
+}
