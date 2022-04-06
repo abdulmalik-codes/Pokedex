@@ -109,6 +109,19 @@ h3 span {
   overflow: scroll;
 }
 
+.pokemon-info-data p {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  /* background-color: #445e9c; */
+}
+
+.pokemon-info-data p span {
+  /* background-color: #445e9c; */
+}
+
 /* types styles */
 
 /* normal */

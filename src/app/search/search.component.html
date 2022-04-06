@@ -104,39 +104,47 @@
           <div class="pokemon-info" [ngClass]="pokemonTypes()">
             <div class="container">
               <div class="row pokemon-info-data" [ngClass]="pokemonTypes()">
-                <div class="d-flex flex-wrap">
+                <div class="row">
                   <div class="col">
+                    <h4>Abilities</h4>
                     <p>
-                      Moves
-                      <span>
-                        {{ pokemon.moves[0].move.name }}
-                        {{ pokemon.moves[1].move.name }}
-                      </span>
-                      <!-- <span *ngFor="let move of pokemon.moves">
-                        {{ move.move.name }} |
-                      </span> -->
-                    </p>
-                    <p>
-                      Abilities
                       <span *ngFor="let ability of pokemon.abilities">
                         {{ ability.ability.name }}
                       </span>
                     </p>
+                  </div>
 
-                    <p>
+                  <div class="col">
+                    <h4>
                       {{ pokemon.stats[3].stat.name }}
+                    </h4>
+                    <p>
                       <span>
                         {{ pokemon.stats[3].base_stat }}
                       </span>
                     </p>
 
-                    <p>
+                    <h4>
                       {{ pokemon.stats[4].stat.name }}
+                    </h4>
+                    <p>
                       <span>
                         {{ pokemon.stats[4].base_stat }}
                       </span>
                     </p>
                   </div>
+                </div>
+                <div class="row">
+                  <h4>Moves</h4>
+                  <p>
+                    <!-- <span>
+                      {{ pokemon.moves[0].move.name }}
+                      {{ pokemon.moves[1].move.name }}
+                    </span> -->
+                    <span *ngFor="let move of pokemon.moves">
+                      {{ move.move.name }}
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
