@@ -1,10 +1,29 @@
+<app-search></app-search>
 <div class="container">
-  <app-search></app-search>
   <h1>Pokedex</h1>
 </div>
 
-<!-- <div *ngFor="let result of listPokemon.results">
-  <div class="row">
-    {{ result.name }}
+<div class="container">
+  <div
+    class="d-flex flex-wrap"
+    style="
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div *ngFor="let result of listPokemon.results">
+      <div class="card-box">
+        <img
+          style="background-color: aqua; margin: 10px; height: 180px"
+          src="../assets/pokemon_card_back.png"
+          alt="pokemon card"
+          class="pokemon-card"
+        />
+      </div>
+    </div>
   </div>
-</div> -->
+</div>
+
+<!-- test -->
