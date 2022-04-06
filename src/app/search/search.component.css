@@ -122,6 +122,13 @@ h3 span {
   /* background-color: #445e9c; */
 }
 
+.pokemon-moves {
+  /* border: 1px solid black; */
+  margin: 2px;
+  padding: 5px;
+  border-radius: 30px;
+}
+
 /* types styles */
 
 /* normal */
@@ -147,6 +154,9 @@ h3 span {
 .pokemon-powers.normal p span {
   color: #c6c6a7;
   background-color: #6d6d4e;
+}
+.pokemon-moves.normal {
+  border: 1px solid #6d6d4e;
 }
 .img-background.normal {
   background-image: url("../../assets/normal_background.jfif");
@@ -176,6 +186,9 @@ h3 span {
   color: #f5ac78;
   background-color: #9c531f;
 }
+.pokemon-moves.fire {
+  border: 1px solid #9c531f;
+}
 .img-background.fire {
   background-image: url("../../assets/fire_background.jfif");
 }
@@ -203,6 +216,9 @@ h3 span {
 .pokemon-powers.water p span {
   color: #9db7f5;
   background-color: #445e9c;
+}
+.pokemon-moves.water {
+  border: 1px solid #445e9c;
 }
 .img-background.water {
   background-image: url("../../assets/water_background.jfif");
@@ -232,6 +248,9 @@ h3 span {
   color: #a7db8d;
   background-color: #4e8234;
 }
+.pokemon-moves.grass {
+  border: 1px solid #4e8234;
+}
 .img-background.grass {
   background-image: url("../../assets/grass_background.jfif");
 }
@@ -259,6 +278,9 @@ h3 span {
 .pokemon-powers.electric p span {
   color: #fae078;
   background-color: #a1871f;
+}
+.pokemon-moves.electric {
+  border: 1px solid #a1871f;
 }
 .img-background.electric {
   background-image: url("../../assets/electric_background.jfif");
@@ -288,6 +310,9 @@ h3 span {
   color: #bce6e6;
   background-color: #638d8d;
 }
+.pokemon-moves.ice {
+  border: 1px solid #638d8d;
+}
 .img-background.ice {
   background-image: url("../../assets/ice_background.jfif");
 }
@@ -315,6 +340,9 @@ h3 span {
 .pokemon-powers.fighting p span {
   color: #d67873;
   background-color: #7d1f1a;
+}
+.pokemon-moves.fighting {
+  border: 1px solid #7d1f1a;
 }
 .img-background.fighting {
   background-image: url("../../assets/fighting_background.jfif");
@@ -344,6 +372,9 @@ h3 span {
   color: #c183c1;
   background-color: #682a68;
 }
+.pokemon-moves.poison {
+  border: 1px solid #682a68;
+}
 .img-background.poison {
   background-image: url("../../assets/poison_background.jfif");
 }
@@ -371,6 +402,9 @@ h3 span {
 .pokemon-powers.ground p span {
   color: #ebd69d;
   background-color: #927d44;
+}
+.pokemon-moves.ground {
+  border: 1px solid #927d44;
 }
 .img-background.ground {
   background-image: url("../../assets/ground_background.jfif");
@@ -400,6 +434,9 @@ h3 span {
   color: #c6b7f5;
   background-color: #6d5e9c;
 }
+.pokemon-moves.flying {
+  border: 1px solid #6d5e9c;
+}
 .img-background.flying {
   background-image: url("../../assets/flying_background.jfif");
 }
@@ -427,6 +464,9 @@ h3 span {
 .pokemon-powers.psychic p span {
   color: #fa92b2;
   background-color: #a13959;
+}
+.pokemon-moves.psychic {
+  border: 1px solid #a13959;
 }
 .img-background.psychic {
   background-image: url("../../assets/psychic_background.jfif");
@@ -456,6 +496,9 @@ h3 span {
   color: #c6d16e;
   background-color: #6d7815;
 }
+.pokemon-moves.bug {
+  border: 1px solid #6d7815;
+}
 .img-background.bug {
   background-image: url("../../assets/bug_background.jfif");
 }
@@ -483,6 +526,9 @@ h3 span {
 .pokemon-powers.rock p span {
   color: #d1c17d;
   background-color: #786824;
+}
+.pokemon-moves.rock {
+  border: 1px solid #786824;
 }
 .img-background.rock {
   background-image: url("../../assets/rock_background.png");
@@ -512,6 +558,9 @@ h3 span {
   color: #a292bc;
   background-color: #493963;
 }
+.pokemon-moves.ghost {
+  border: 1px solid #493963;
+}
 .img-background.ghost {
   background-image: url("../../assets/ghost_background.jfif");
 }
@@ -539,6 +588,9 @@ h3 span {
 .pokemon-powers.dark p span {
   color: #a29288;
   background-color: #49392f;
+}
+.pokemon-moves.dark {
+  border: 1px solid #49392f;
 }
 .img-background.dark {
   background-image: url("../../assets/dark_background.jfif");
@@ -568,6 +620,9 @@ h3 span {
   color: #a27dfa;
   background-color: #4924a1;
 }
+.pokemon-moves.dragon {
+  border: 1px solid #4924a1;
+}
 .img-background.dragon {
   background-image: url("../../assets/dragon_background.jfif");
 }
@@ -596,6 +651,9 @@ h3 span {
   color: #d1d1e0;
   background-color: #787887;
 }
+.pokemon-moves.steel {
+  border: 1px solid #787887;
+}
 .img-background.steel {
   background-image: url("../../assets/steel_background.jfif");
 }
@@ -623,6 +681,9 @@ h3 span {
 .pokemon-powers.fairy p span {
   color: #f4bdc9;
   background-color: #9b6470;
+}
+.pokemon-moves.fairy {
+  border: 1px solid #9b6470;
 }
 .img-background.fairy {
   background-image: url("../../assets/fairy_background.jfif");

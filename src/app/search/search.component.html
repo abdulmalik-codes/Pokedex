@@ -107,10 +107,8 @@
                 <div class="row">
                   <div class="col">
                     <h4>Abilities</h4>
-                    <p>
-                      <span *ngFor="let ability of pokemon.abilities">
-                        {{ ability.ability.name }}
-                      </span>
+                    <p *ngFor="let ability of pokemon.abilities">
+                      {{ ability.ability.name }}
                     </p>
                   </div>
 
@@ -119,31 +117,25 @@
                       {{ pokemon.stats[3].stat.name }}
                     </h4>
                     <p>
-                      <span>
-                        {{ pokemon.stats[3].base_stat }}
-                      </span>
+                      {{ pokemon.stats[3].base_stat }}
                     </p>
 
                     <h4>
                       {{ pokemon.stats[4].stat.name }}
                     </h4>
                     <p>
-                      <span>
-                        {{ pokemon.stats[4].base_stat }}
-                      </span>
+                      {{ pokemon.stats[4].base_stat }}
                     </p>
                   </div>
                 </div>
-                <div class="row">
-                  <h4>Moves</h4>
-                  <p>
-                    <!-- <span>
-                      {{ pokemon.moves[0].move.name }}
-                      {{ pokemon.moves[1].move.name }}
-                    </span> -->
-                    <span *ngFor="let move of pokemon.moves">
-                      {{ move.move.name }}
-                    </span>
+                <h4>Moves</h4>
+                <div class="d-flex flex-wrap">
+                  <p
+                    class="pokemon-moves"
+                    *ngFor="let move of pokemon.moves"
+                    [ngClass]="pokemonTypes()"
+                  >
+                    {{ move.move.name }}
                   </p>
                 </div>
               </div>

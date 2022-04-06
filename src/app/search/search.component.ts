@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(private http: HttpClient) {}
   //  private subscription: Subscription
   ngOnInit() {
-    this.searchPokemon();
+    // this.searchPokemon();
     // this.searchPokemonByType();
     this.fetchPokemonData();
   }
@@ -75,7 +75,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       // fairy togekiss
 
       await api
-        .getPokemonByName('pikachu')
+        .getPokemonByName(this.pokemonNameInput)
         // this.pokemonNameInput
         .then((data) => {
           console.log(data);
