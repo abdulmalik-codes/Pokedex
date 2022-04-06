@@ -23,7 +23,11 @@
       />
     </div>
     <div class="col">
-      <button class="btn btn-primary" (click)="searchPokemon()">
+      <button
+        [disabled]="pokemonNameInput == ''"
+        class="btn btn-primary"
+        (click)="searchPokemon()"
+      >
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
@@ -45,97 +49,100 @@
           <div class="row">
             <div class="col">
               <h2>
-                {{ pokemon.name }}
+                {{ pokemon.name | uppercase }}
               </h2>
             </div>
 
             <div class="col">
-              <h3>
-                {{ pokemon.stats[0].stat.name | uppercase }}
-                <span>
-                  {{ pokemon.stats[0].base_stat }}
-                </span>
-              </h3>
+              <h3>#{{ pokemon.id }}</h3>
+              <span *ngFor="let type of pokemon.types"
+                >-{{ type.type.name }}
+              </span>
             </div>
           </div>
 
-          <div [ngClass]="pokemonTypes()" class="img-background">
-            <img
-              style="height: 150px; width: 150px"
-              [src]="[pokemon.sprites.other.dream_world.front_default]"
-              alt=""
-            />
-          </div>
+          <div class="row">
+            <div [ngClass]="pokemonTypes()" class="img-background container">
+              <img
+                [src]="[pokemon.sprites.other.dream_world.front_default]"
+                alt="pokemon picture"
+                class="img-responsive"
+              />
+              <div [ngClass]="pokemonTypes()" class="pokemon-mass">
+                <p>
+                  height <span>{{ pokemon.height }}m </span>
+                </p>
+                <p>
+                  weight <span>{{ pokemon.weight }}kg </span>
+                </p>
+              </div>
 
-          <div class="container">
-            <p>height: {{ pokemon.height }}m</p>
-            <p>weight: {{ pokemon.weight }}kg</p>
-          </div>
-
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <h5>
+              <div [ngClass]="pokemonTypes()" class="pokemon-powers">
+                <p>
                   {{ pokemon.stats[1].stat.name }}
-                  {{ pokemon.stats[1].base_stat }}
-                </h5>
-              </div>
+                  <span>
+                    {{ pokemon.stats[1].base_stat }}
+                  </span>
+                </p>
 
-              <div class="col">
-                <h5>
+                <p>
                   {{ pokemon.stats[2].stat.name }}
-                  {{ pokemon.stats[2].base_stat }}
-                </h5>
-              </div>
+                  <span>
+                    {{ pokemon.stats[2].base_stat }}
+                  </span>
+                </p>
 
-              <div class="col">
-                <h5>
-                  {{ pokemon.stats[3].stat.name }}
-                  {{ pokemon.stats[3].base_stat }}
-                </h5>
-              </div>
-
-              <div class="col">
-                <h5>
-                  {{ pokemon.stats[4].stat.name }}
-                  {{ pokemon.stats[4].base_stat }}
-                </h5>
-              </div>
-
-              <div class="col">
-                <h5>
+                <p>
                   {{ pokemon.stats[5].stat.name }}
-                </h5>
-                <h4>
-                  {{ pokemon.stats[5].base_stat }}
-                </h4>
+                  <span>
+                    {{ pokemon.stats[5].base_stat }}
+                  </span>
+                </p>
               </div>
             </div>
           </div>
+          <div class="pokemon-info" [ngClass]="pokemonTypes()">
+            <div class="container">
+              <div class="row pokemon-info-data" [ngClass]="pokemonTypes()">
+                <div class="d-flex flex-wrap">
+                  <div class="col">
+                    <p>
+                      Moves
+                      <span>
+                        {{ pokemon.moves[0].move.name }}
+                        {{ pokemon.moves[1].move.name }}
+                      </span>
+                      <!-- <span *ngFor="let move of pokemon.moves">
+                        {{ move.move.name }} |
+                      </span> -->
+                    </p>
+                    <p>
+                      Abilities
+                      <span *ngFor="let ability of pokemon.abilities">
+                        {{ ability.ability.name }}
+                      </span>
+                    </p>
 
-          <div class="container">
-            <h4>abilities:</h4>
-            <h5 *ngFor="let ability of pokemon.abilities">
-              {{ ability.ability.name }}
-            </h5>
-          </div>
+                    <p>
+                      {{ pokemon.stats[3].stat.name }}
+                      <span>
+                        {{ pokemon.stats[3].base_stat }}
+                      </span>
+                    </p>
 
-          <!-- types -->
-          <div>
-            type:
-            <ul *ngFor="let type of pokemon.types">
-              <li>
-                {{ type.type.name }}
-              </li>
-            </ul>
+                    <p>
+                      {{ pokemon.stats[4].stat.name }}
+                      <span>
+                        {{ pokemon.stats[4].base_stat }}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- <div *ngFor="let picture of pokemon.sprites">
-              <img [src]="['picture.back_default']" alt="" />
-            </div> -->
-      <!-- <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/405.png"  /> -->
 
       <!-- <div *ngFor="let move of pokemon.moves">
               <p>move:</p>

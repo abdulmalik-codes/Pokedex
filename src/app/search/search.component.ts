@@ -55,8 +55,27 @@ export class SearchComponent implements OnInit, OnDestroy {
     (async () => {
       const api = new PokemonClient();
 
+      // normal spearow
+      // fire charizard
+      // water squirtle
+      // grass bulbasaur
+      // electric pikachu
+      // ice froslass
+      // fighting lucario
+      // poison crobat
+      // ground sandslash
+      // flying charizard [1]
+      // psychic lugia
+      // bug butterfree
+      // rock aerodactyl
+      // ghost gastly
+      // dark sneasel
+      // dragon rayquaza
+      // steel steelix
+      // fairy togekiss
+
       await api
-        .getPokemonByName('bulbasaur')
+        .getPokemonByName('pikachu')
         // this.pokemonNameInput
         .then((data) => {
           console.log(data);
@@ -118,13 +137,24 @@ export class SearchComponent implements OnInit, OnDestroy {
       console.log(type);
     }
     return {
-      water: this.pokemons[0].types[0].type.name == 'water',
-      fire: this.pokemons[0].types[0].type.name == 'fire',
-      flying: this.pokemons[0].types[0].type.name == 'flying',
-      poison: this.pokemons[0].types[0].type.name == 'poison',
-      grass: this.pokemons[0].types[0].type.name == 'grass',
       normal: this.pokemons[0].types[0].type.name == 'normal',
+      fire: this.pokemons[0].types[0].type.name == 'fire',
+      water: this.pokemons[0].types[0].type.name == 'water',
+      grass: this.pokemons[0].types[0].type.name == 'grass',
       electric: this.pokemons[0].types[0].type.name == 'electric',
+      ice: this.pokemons[0].types[0].type.name == 'ice',
+      fighting: this.pokemons[0].types[0].type.name == 'fighting',
+      poison: this.pokemons[0].types[0].type.name == 'poison',
+      ground: this.pokemons[0].types[0].type.name == 'ground',
+      flying: this.pokemons[0].types[0].type.name == 'flying',
+      psychic: this.pokemons[0].types[0].type.name == 'psychic',
+      bug: this.pokemons[0].types[0].type.name == 'bug',
+      rock: this.pokemons[0].types[0].type.name == 'rock',
+      ghost: this.pokemons[0].types[0].type.name == 'ghost',
+      dark: this.pokemons[0].types[0].type.name == 'dark',
+      dragon: this.pokemons[0].types[0].type.name == 'dragon',
+      steel: this.pokemons[0].types[0].type.name == 'steel',
+      fairy: this.pokemons[0].types[0].type.name == 'fairy',
     };
   }
 }
