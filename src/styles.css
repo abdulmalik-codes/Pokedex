@@ -14,9 +14,6 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
   /* width: 50vw; */
-
-  cursor: url(../../assets/opened_pokeball.png),
-    url(../../assets/closed_pokeball.png);
 }
 
 ::-webkit-scrollbar {
