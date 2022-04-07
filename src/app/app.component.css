@@ -34,7 +34,7 @@ h6 {
 }
 
 .pokemon-container {
-  /* cursor: url(../assets/closed_pokeball.png), auto; */
+  cursor: url(../assets/closed_pokeball.png), auto;
 }
 
 /* flip card */
@@ -46,7 +46,7 @@ h6 {
   height: 180px;
   margin: 10px;
 
-  /* cursor: url(../assets/opened_pokeball.png), auto; */
+  cursor: url(../assets/opened_pokeball.png), auto;
 }
 .pokemon-card {
   height: 177px;
