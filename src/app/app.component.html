@@ -1,29 +1,202 @@
-<app-search></app-search>
-<div class="container">
-  <h1>Pokedex</h1>
-</div>
+<div class="container pokemon-container">
+  <h1>{{ title }}</h1>
 
-<div class="container">
-  <div
-    class="d-flex flex-wrap"
-    style="
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    "
-  >
-    <div *ngFor="let result of listPokemon.results">
-      <div class="card-box">
-        <img
-          style="background-color: aqua; margin: 10px; height: 180px"
-          src="../assets/pokemon_card_back.png"
-          alt="pokemon card"
-          class="pokemon-card"
+  <h2>Gotta Catch 'Em All</h2>
+
+  <div class="search-group">
+    <div class="row">
+      <div class="col">
+        <select
+          class="form-select"
+          [(ngModel)]="pokemonNameInput"
+          *ngIf="select"
+          style="width: 200px"
+        >
+          <option
+            *ngFor="let result of listPokemon.results"
+            [value]="result.name"
+          >
+            {{ result.name }}
+          </option>
+        </select>
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="pokemonNameInput"
+          *ngIf="type"
+          style="width: 200px"
         />
+      </div>
+      <div class="col">
+        <button
+          [disabled]="pokemonNameInput == ''"
+          class="btn btn-primary"
+          (click)="searchPokemon()"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="col">
+      <br />
+      <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+        Switch to {{ searchMode ? "Type" : "Select" }} mode
+      </button>
+    </div>
+  </div>
+
+  <div class="backdrop" (click)="onCloseModal()" *ngIf="show">
+    <div *ngIf="pokemonsShow">
+      <div *ngFor="let pokemon of pokemons">
+        <div class="pokemon-modal" [ngClass]="pokemonTypes()">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h2>
+                  {{ pokemon.name | uppercase }}
+                </h2>
+              </div>
+
+              <div class="col">
+                <h3>#{{ pokemon.id }}</h3>
+                <span *ngFor="let type of pokemon.types"
+                  >-{{ type.type.name }}
+                </span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div [ngClass]="pokemonTypes()" class="img-background container">
+                <img
+                  [src]="[pokemon.sprites.other.dream_world.front_default]"
+                  alt="pokemon picture"
+                  class="img-responsive"
+                />
+                <div [ngClass]="pokemonTypes()" class="pokemon-mass">
+                  <p>
+                    height <span>{{ pokemon.height }}m </span>
+                  </p>
+                  <p>
+                    weight <span>{{ pokemon.weight }}kg </span>
+                  </p>
+                </div>
+
+                <div [ngClass]="pokemonTypes()" class="pokemon-powers">
+                  <p>
+                    {{ pokemon.stats[1].stat.name }}
+                    <span>
+                      {{ pokemon.stats[1].base_stat }}
+                    </span>
+                  </p>
+
+                  <p>
+                    {{ pokemon.stats[2].stat.name }}
+                    <span>
+                      {{ pokemon.stats[2].base_stat }}
+                    </span>
+                  </p>
+
+                  <p>
+                    {{ pokemon.stats[5].stat.name }}
+                    <span>
+                      {{ pokemon.stats[5].base_stat }}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="pokemon-info" [ngClass]="pokemonTypes()">
+              <div class="container">
+                <div class="row pokemon-info-data" [ngClass]="pokemonTypes()">
+                  <div class="row">
+                    <div class="col">
+                      <h4>Abilities</h4>
+                      <p *ngFor="let ability of pokemon.abilities">
+                        {{ ability.ability.name }}
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h4>
+                        {{ pokemon.stats[3].stat.name }}
+                      </h4>
+                      <p>
+                        {{ pokemon.stats[3].base_stat }}
+                      </p>
+
+                      <h4>
+                        {{ pokemon.stats[4].stat.name }}
+                      </h4>
+                      <p>
+                        {{ pokemon.stats[4].base_stat }}
+                      </p>
+                    </div>
+                  </div>
+                  <h4>Moves</h4>
+                  <div class="d-flex flex-wrap">
+                    <p
+                      class="pokemon-moves"
+                      *ngFor="let move of pokemon.moves"
+                      [ngClass]="pokemonTypes()"
+                    >
+                      {{ move.move.name }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div
+      class="d-flex flex-wrap pokemon-cards"
+      style="
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div *ngFor="let result of listPokemonView.results">
+        <div class="flip-card" (click)="onSelectPokemon(result.name)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img
+                src="../assets/pokemon_card_back.png"
+                alt="pokemon card"
+                class="pokemon-card"
+              />
+            </div>
+            <div class="flip-card-back">
+              <h6>
+                {{ result.name | uppercase }}
+              </h6>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- test -->
+<!-- error -->
+
+<!--
+
+      <div *ngIf="errorMessageShow" class="modal-box">
+    <p>
+      {{ errorMessage }}
+    </p>
+
+    <p>"{{ pokemonNameInput | lowercase }}" is not a known pokemon</p>
+
+    <div class="modal-actions">
+      <button (click)="onCloseModal()" class="btn btn-danger">X</button>
+    </div>
+  </div>
+     -->
