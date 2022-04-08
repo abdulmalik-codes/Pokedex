@@ -119,8 +119,8 @@ h6 {
 .pokemon-modal {
   position: absolute;
   top: 0;
-  left: 30vw;
-  width: 40vw;
+  left: 35%;
+  width: 500px;
   padding: 16px;
   margin-top: 5px;
   margin-bottom: 5px;
