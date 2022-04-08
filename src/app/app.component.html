@@ -1,54 +1,59 @@
 <div class="container pokemon-container">
-  <h1>{{ title }}</h1>
+  <div class="row">
+    <div class="col-sm-8">
+      <h1>{{ title }}</h1>
 
-  <h2>Gotta Catch 'Em All</h2>
-
-  <div class="search-group">
-    <div class="row">
-      <div class="col">
-        <select
-          class="form-select"
-          [(ngModel)]="pokemonNameInput"
-          *ngIf="select"
-          style="width: 200px"
-        >
-          <option
-            *ngFor="let result of listPokemon.results"
-            [value]="result.name"
-          >
-            {{ result.name }}
-          </option>
-        </select>
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="pokemonNameInput"
-          *ngIf="type"
-          style="width: 200px"
-        />
-      </div>
-      <div class="col">
-        <button
-          [disabled]="pokemonNameInput == ''"
-          class="btn btn-primary"
-          (click)="searchPokemon()"
-        >
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
+      <h2>Gotta Catch 'Em All</h2>
     </div>
-
-    <div class="col">
-      <br />
-      <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
-        Switch to {{ searchMode ? "Type" : "Select" }} mode
-      </button>
+    <div class="col-sm-4">
+      <div class="search-group">
+        <div class="">
+          <div class="col">
+            <select
+              class="form-select"
+              [(ngModel)]="pokemonNameInput"
+              *ngIf="select"
+            >
+              <option
+                *ngFor="let result of listPokemon.results"
+                [value]="result.name"
+              >
+                {{ result.name }}
+              </option>
+            </select>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="pokemonNameInput"
+              *ngIf="type"
+              style="width: 200px"
+            />
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-primary"
+              (click)="onSwitchMode()"
+              type="button"
+            >
+              Switch to {{ searchMode ? "Type" : "Select" }} mode
+            </button>
+            |
+            <button
+              [disabled]="pokemonNameInput == ''"
+              class="btn btn-primary"
+              (click)="searchPokemon()"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="backdrop" (click)="onCloseModal()" *ngIf="show">
     <div *ngIf="pokemonsShow">
-      <div *ngFor="let pokemon of pokemons">
+      <div *ngFor="let pokemon of pokemons" class="modal-holder">
         <div class="pokemon-modal" [ngClass]="pokemonTypes()">
           <div class="container">
             <div class="row">
@@ -153,15 +158,7 @@
   </div>
 
   <div class="container">
-    <div
-      class="d-flex flex-wrap pokemon-cards"
-      style="
-        background-color: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      "
-    >
+    <div class="d-flex flex-wrap pokemon-cards">
       <div *ngFor="let result of listPokemonView.results">
         <div class="flip-card" (click)="onSelectPokemon(result.name)">
           <div class="flip-card-inner">

@@ -48,6 +48,14 @@ h6 {
 
   cursor: url(../assets/opened_pokeball.png), auto;
 }
+
+.pokemon-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  height: 65vh;
+}
 .pokemon-card {
   height: 177px;
   width: 137px;
@@ -95,9 +103,12 @@ h6 {
 /* search */
 
 .search-group {
-  position: fixed;
-  right: 20px;
-  top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 /* modal */
@@ -116,16 +127,17 @@ h6 {
   cursor: zoom-out;
 }
 
+.modal-holder {
+  display: flex;
+  justify-content: center;
+}
+
 .pokemon-modal {
   position: absolute;
   top: 0;
-  left: 35%;
-  width: 500px;
-  padding: 16px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-
+  width: 400px;
   height: 100%;
+  padding: 16px;
   z-index: 100;
   border-radius: 30px;
 }
